@@ -6,8 +6,10 @@
 //  Copyright (c) 2013年 Fujisawa Hiroaki. All rights reserved.
 //
 
-#import "marginViewController.h"
+@import GoogleMobileAds;
 
+#import "marginViewController.h"
+#import "AdModDefine.h"
 
 @interface marginViewController ()
 
@@ -41,36 +43,36 @@
 }
 
 // *****************************************************************
-//	@brief	Initialize iAD module.
+//	@brief	Initialize AdMod module.
 //	@note
 //		none
 // *****************************************************************
 - (void) initiAD
 {
-	m_adView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-	
-	// 画面(ビュー)の下に表示する場合
-	m_adView.frame = CGRectMake(0, self.view.frame.size.height - m_adView.frame.size.height, m_adView.frame.size.width, m_adView.frame.size.height);
-	
-	// adViewのフレーム矩形が変更された時にサブビューのサイズを自動的に変更
-	m_adView.autoresizesSubviews = YES;
-	
-	// 横向き、縦向きに回転した際に、自動的に広告の横幅を調整し、画面上に固定
-	// ※画面下に表示する場合は、コメントアウト。
-	m_adView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-	
-	// 横向き、縦向きに回転した際に、自動的に広告の横幅を調整し、画面下に固定
-	// ※画面上に表示する場合は、コメントアウト。
-	//adView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-	
-	// 非表示にしておく
-	m_adView.alpha = 0.0f;
-	
-	// ビューに追加
-	[self.view addSubview:m_adView];
-	
-	// デリゲートをこの UIViewContoroller に渡す
-	m_adView.delegate = self;
+    // 画面上部に標準サイズのビューを作成する
+    // 利用可能な広告サイズの定数値は GADAdSize.h で説明されている
+    m_bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    
+    m_bannerView.adUnitID = ADMOD_UNITID;
+    m_bannerView.rootViewController = self;
+    
+    GADRequest *request = [GADRequest request];
+    // request.testDevices = @[kGADSimulatorID];    // シミュレーターで表示する場合はコメント解除
+
+    // ユーザーに広告を表示した場所に後で復元する UIViewController をランタイムに知らせて
+    // ビュー階層に追加する
+    [self.view addSubview:m_bannerView];
+    
+    CGRect rectBanner;
+    rectBanner.origin.x = (self.view.frame.size.width - m_bannerView.frame.size.width) / 2;
+    rectBanner.origin.y = self.view.frame.size.height - m_bannerView.frame.size.height;
+    rectBanner.size.width = m_bannerView.frame.size.width;
+    rectBanner.size.height = m_bannerView.frame.size.height;
+    
+    m_bannerView.frame = rectBanner;
+    
+    // 一般的なリクエストを行って広告を読み込む
+    [m_bannerView loadRequest:request];
 }
 
 // *****************************************************************
@@ -540,26 +542,5 @@
 	[self updateDisplay];
 }
 
-// iAdの受信に成功したとき
--(void)bannerViewDidLoadAd:(ADBannerView *)banner {
-	// バナーが表示されていない場合
-	if ( !bannerIsVisible ) {
-		// 表示
-		banner.alpha = 1.0f;
-	}
-	// フラグをYESに
-	bannerIsVisible = YES;
-}
-
-// iAdの受信に失敗したとき
--(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-	// バナーが表示されている場合
-	if ( bannerIsVisible ) {
-		// 非表示
-		banner.alpha = 0.0f;
-	}
-	// フラグをNOに
-	bannerIsVisible = NO;
-}
 
 @end

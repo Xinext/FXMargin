@@ -24,3 +24,5 @@ DerivedData
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 #Pods/
+FX_margin/._AdModDefine.h
+FX_margin/AdModDefine.h

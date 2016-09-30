@@ -14,12 +14,12 @@
 #import "rateViewController.h"
 #import "leverageViewController.h"
 #import "lotViewController.h"
+#import <GoogleMobileAds/GADBannerView.h>
 
 @interface marginViewController : UIViewController <ADBannerViewDelegate, rateViewControllerDelegate, leverageViewControllerDelegate, lotViewControllerDelegate>
 {
 	// *** AD ***
-	ADBannerView*	m_adView;
-	BOOL			bannerIsVisible;
+    GADBannerView*  m_bannerView;
 	
 	// Dialog
 	rateViewController*		m_rateViewController;
