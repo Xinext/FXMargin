@@ -51,7 +51,7 @@
 {
     // 画面上部に標準サイズのビューを作成する
     // 利用可能な広告サイズの定数値は GADAdSize.h で説明されている
-    m_bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    m_bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
     
     m_bannerView.adUnitID = ADMOD_UNITID;
     m_bannerView.rootViewController = self;
@@ -64,7 +64,7 @@
     [self.view addSubview:m_bannerView];
     
     CGRect rectBanner;
-    rectBanner.origin.x = (self.view.frame.size.width - m_bannerView.frame.size.width) / 2;
+    rectBanner.origin.x = 0;
     rectBanner.origin.y = self.view.frame.size.height - m_bannerView.frame.size.height;
     rectBanner.size.width = m_bannerView.frame.size.width;
     rectBanner.size.height = m_bannerView.frame.size.height;
