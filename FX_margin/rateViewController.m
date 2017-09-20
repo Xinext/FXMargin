@@ -611,7 +611,7 @@
 {
 	CGFloat	result = 0;
 
-	NSString*	strURL = [NSString stringWithFormat:@"%@%@%@", @"https://www.google.com/finance/converter?a=1&from=", strCurrency, @"&to=JPY"];
+	NSString*	strURL = [NSString stringWithFormat:@"%@%@%@", @"https://finance.google.com/finance/converter?a=1&from=", strCurrency, @"&to=JPY"];
 	NSURL *url = [NSURL URLWithString:strURL];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setTimeoutInterval:2];

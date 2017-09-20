@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="drawing.svg"
-   inkscape:export-filename="/Users/hiro_macbook/Desktop/iTunes1024_icon.png"
-   inkscape:export-xdpi="89.999977"
-   inkscape:export-ydpi="89.999977">
+   inkscape:export-filename="/Users/hiro_macbook/Desktop/x1536_icon"
+   inkscape:export-xdpi="134.99997"
+   inkscape:export-ydpi="134.99997">
   <defs
      id="defs4">
     <linearGradient
@@ -45,15 +45,15 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.55"
-     inkscape:cx="-5.8092136"
+     inkscape:cx="-159.16512"
      inkscape:cy="515.81927"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="2062"
      inkscape:window-height="1029"
-     inkscape:window-x="513"
-     inkscape:window-y="108"
+     inkscape:window-x="194"
+     inkscape:window-y="54"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
@@ -67,7 +67,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

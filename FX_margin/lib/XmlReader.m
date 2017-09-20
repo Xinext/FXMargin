@@ -2,7 +2,7 @@
 //  XMLReader.m
 //
 
-#import "XMLReader.h"
+#import "XmlReader.h"
 
 NSString *const kXMLReaderTextNodeKey = @"text";
 
